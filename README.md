@@ -85,3 +85,4 @@ MIT License
 
 Created with ❤️ using OpenAI and Jetson Orin Nano
 
+thank you - happy machines and ai/stalegum :)

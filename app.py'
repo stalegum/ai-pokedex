@@ -1,0 +1,127 @@
+from flask import Flask, request, render_template
+from pokedex import get_pokemon_info
+from model_stub import classify_sprite  # Replace with your real model
+import os
+
+app = Flask(__name__)
+
+UPLOAD_FOLDER = "uploads"
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
+@app.route("/", methods=["GET", "POST"])
+def index():
+    result = None
+    if request.method == "POST":
+        image = request.files.get("sprite_image")
+        if image:
+            image_path = os.path.join(UPLOAD_FOLDER, "input.png")
+            image.save(image_path)
+
+            predicted_name = classify_sprite(image_path)
+            result = get_pokemon_info(predicted_name)
+
+    return render_template("index.html", result=result)
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8000, debug=True)
+✅ How to Replace It in Your File
+Run:
+
+bash
+Copy
+Edit
+nano app.py
+Delete everything in the file
+(hold Ctrl+K repeatedly in nano to cut lines)
+
+Paste the code above
+
+Press:
+
+Ctrl+O → then Enter to save
+
+Ctrl+X to exit
+
+🔁 Then restart Flask
+bash
+Copy
+Edit
+python3 app.py
+And open in browser:
+
+cpp
+Copy
+Edit
+http://<your-ip>:8000
+✅ You're Done
+This version will fix:
+
+IndentationError
+
+BadRequestKeyError
+
+and ensures your index() function is correctly defined
+
+Let me know if you'd like me to send a full ZIP of this working project. You're almost there!
+
+
+
+
+
+
+
+
+You said:
+File "/home/nvidia10/ai-pokedex/app.py", line 10
+    image = request.files.get("sprite_image")
+                                             ^
+IndentationError: unindent does not match any outer indentation level
+
+
+ChatGPT said:
+Thanks for the update — this confirms you're still running into a classic indentation mismatch in Python. It means the spacing is broken (usually mixing tabs and spaces) before line 10.
+
+✅ Quickest Fix (Recommended)
+Let’s force everything to use 4 spaces only — the Python standard.
+
+🛠 Step-by-Step Fix
+1. Open your file in VS Code or Nano:
+bash
+Copy
+Edit
+nano app.py
+2. Delete all the contents
+To do that in nano, press Ctrl + K repeatedly until the file is empty.
+
+3. Paste This Clean Version
+Everything below uses spaces only, no tabs:
+
+python
+Copy
+Edit
+from flask import Flask, request, render_template
+from pokedex import get_pokemon_info
+from model_stub import classify_sprite
+import os
+
+app = Flask(__name__)
+
+UPLOAD_FOLDER = "uploads"
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
+@app.route("/", methods=["GET", "POST"])
+def index():
+    result = None
+    if request.method == "POST":
+        image = request.files.get("sprite_image")
+        if image:
+            image_path = os.path.join(UPLOAD_FOLDER, "input.png")
+            image.save(image_path)
+
+            predicted_name = classify_sprite(image_path)
+            result = get_pokemon_info(predicted_name)
+
+    return render_template("index.html", result=result)
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8000, debug=True)

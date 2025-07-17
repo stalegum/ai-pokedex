@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Pokédex</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2em;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: lime;
+        }
+        form {
+            margin-bottom: 2em;
+        }
+        .pokemon-info {
+            border: 1px solid #ccc;
+            padding: 1em;
+            background: white;
+            border-radius: 8px;
+            max-width: 800px;
+        }
+        .sprites {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+            margin-top: 1em;
+        }
+        .sprites div {
+            text-align: center;
+        }
+        img {
+            width: 120px;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>✅ AI Pokédex</h1>
+    <form method="post" enctype="multipart/form-data">
+        <label for="sprite_image">Upload a Pokémon sprite image:</label><br><br>
+        <input type="file" name="sprite_image" id="sprite_image" required>
+        <button type="submit">Identify Pokémon</button>
+    </form>
+
+    {% if result %}
+        <div class="pokemon-info">
+            <h2>{{ result.name | capitalize }}</h2>
+            <p><strong>Type:</strong> {{ result.type }}</p>
+            <p><strong>Ability:</strong> {{ result.ability }}</p>
+            <p><strong>BST:</strong> {{ result.bst }}</p>
+            <p><strong>Description:</strong> {{ result.pokedex_description }}</p>
+
+            <div class="sprites">
+                <div>
+                    <p><strong>Front</strong></p>
+                    <img src="{{ result.sprite_front }}" alt="Front Sprite">
+                </div>
+                <div>
+                    <p><strong>Back</strong></p>
+                    <img src="{{ result.sprite_back }}" alt="Back Sprite">
+                </div>
+                <div>
+                    <p><strong>Shiny Front</strong></p>
+                    <img src="{{ result.sprite_shiny }}" alt="Shiny Front Sprite">
+                </div>
+                <div>
+                    <p><strong>Shiny Back</strong></p>
+                    <img src="{{ result.sprite_back_shiny }}" alt="Shiny Back Sprite">
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</body>
+</html>
+

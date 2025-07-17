@@ -1,0 +1,31 @@
+so hello im happy machines and ai and the creator of this program and you may be asking "what are those wonderful specifics that the program needs to have to run?"
+you might have not but i don't care im going to tell you anyway
+but before we get into that let me give you a short description of this program
+
+so the program that you may or may not be coding is and ai pokedex this has a database of:
+
+BST's(base stat totals)
+Types
+ability
+shiny sprites
+regular sprites
+the gen 1 description from that games pokedex
+
+now to the actual part mentioned in the short blurb you will need
+
+1.flask
+2.pandas
+3.torch/torchvision
+4.PIL/pillow
+5.most recent version of python
+
+and also to actually run this program use vscode and put in python3 app.py this will make the site then put in http://<your-local-IP>:8000 or http://local-host:8000 or http://127.0.0.1:8000 and it should work
+
+
+and thats pretty much it so past H.M.a.A is going to check out and let you do the rest i belive in you
+
+
+
+
+enjoy the program :)
+                    -Happy Machines and A.I
